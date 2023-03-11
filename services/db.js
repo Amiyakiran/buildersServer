@@ -71,6 +71,19 @@ const Fresher = mongoose.model('Fresher',{
     comment:String
  
  })
+
+ const Project = mongoose.model('Project', {
+    
+    id:String,
+    category:String,
+    place:String,
+    plan:String,
+    video:String,
+    price:String
+    
+
+})
+
  
 module.exports={
     Chairman,
@@ -79,5 +92,6 @@ module.exports={
     Employee,
     Interior,
     User,
-    Fresher
+    Fresher,
+    Project
 }

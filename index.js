@@ -88,3 +88,108 @@ server.post('/apply', (req,res)=>{
     res.status(result.statusCode).json(result)//sending data 
    })
 })
+
+//hiring
+server.get('/hiring',(req, res)=>{
+    dataServices.hiring().then((result)=>{
+        res.status(result.statusCode).json(result)
+    })
+})
+
+//getpwsd
+server.get('/getpwsd',(req, res)=>{
+    dataServices.getpwsd().then((result)=>{
+        res.status(result.statusCode).json(result)
+    })
+})
+
+//changeadminpswd
+server.put('/changeAdmin',(req,res)=>{
+    console.log('inside changeAdmin Api');
+    console.log(req.body);
+    //asynchronous
+    dataServices.changeAdmin(req.body.username,req.body.mail,req.body.pswd).then((result)=>{
+        res.status(result.statusCode).json(result)//sending data through internet to client
+    }) 
+})
+
+//post new job
+server.post('/postcareer',(req,res)=>{
+    console.log('inside new job Api');
+    console.log(req.body);
+    //asynchronous
+    dataServices.postcareer(req.body.title,req.body.qualification,req.body.jobtype,req.body.experience,req.body.salary,req.body.location).then((result)=>{
+        res.status(result.statusCode).json(result)//sending data through internet to client
+    }) 
+})
+
+//delete career
+server.delete('/delete-career/:id',(req, res)=>{
+    dataServices.deletecareer(req.params.id).then((result)=>{
+        res.status(result.statusCode).json(result)
+    })
+})
+
+//delete home
+server.delete('/delete-home/:id',(req, res)=>{
+    dataServices.deletehome(req.params.id).then((result)=>{
+        res.status(result.statusCode).json(result)
+    })
+})
+
+//post new home
+server.post('/postproperties',(req,res)=>{
+    console.log('inside new job Api');
+    console.log(req.body);
+    //asynchronous
+    dataServices.posthome(req.body.category,req.body.place,req.body.plan,req.body.video,req.body.price).then((result)=>{
+        res.status(result.statusCode).json(result)//sending data through internet to client
+    }) 
+})
+
+//update chairman profile
+server.put('/updateChair',(req,res)=>{
+    console.log('inside updateChair Api');
+    console.log(req.body);
+    //asynchronous
+    dataServices.updateChair(req.body.thought,req.body.photo).then((result)=>{
+        res.status(result.statusCode).json(result)//sending data through internet to client
+    }) 
+})
+
+//getapproval
+server.get('/approval',(req, res)=>{
+    dataServices.getapproval().then((result)=>{
+        res.status(result.statusCode).json(result)
+    })
+})
+
+
+//approve new home
+server.post('/approve-home',(req,res)=>{
+    console.log('inside approve-home Api');
+    console.log(req.body);
+    //asynchronous
+    dataServices.approvenewhome(req.body.category,req.body.place,req.body.plan,req.body.video,req.body.price).then((result)=>{
+        res.status(result.statusCode).json(result)//sending data through internet to client
+    }) 
+})
+
+
+//delete approvalhomerequest
+server.delete('/deletefromapproval/:id',(req, res)=>{
+    dataServices.deletefromapproval(req.params.id).then((result)=>{
+        res.status(result.statusCode).json(result)
+    })
+})
+
+
+//update employee profile
+server.put('/indemployeeupdate',(req,res)=>{
+    console.log('inside indemployeeupdate Api');
+    console.log(req.body);
+    //asynchronous
+    dataServices.updateemployee(req.body.empid,req.body.empname,req.body.empphoto).then((result)=>{
+        res.status(result.statusCode).json(result)//sending data through internet to client
+    }) 
+})
